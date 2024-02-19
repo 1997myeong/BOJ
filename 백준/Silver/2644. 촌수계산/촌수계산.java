@@ -35,7 +35,7 @@ public class Main {
             int y = Integer.parseInt(st.nextToken());
             edge[x][y] = edge[y][x] = 1;
         }
-        bfs(a, b);
+        dfs(a, b);
         if (cnt == 0) {
             System.out.println("-1");
         } else {
@@ -46,6 +46,7 @@ public class Main {
 
     }
 
+    // bfs 를 이용한 풀이
     static void bfs(int a, int b) {
         q.add(a);
         while (!q.isEmpty()) {
@@ -53,13 +54,28 @@ public class Main {
             if (num == b) {
                 cnt = visited[num];
             }
-            for (int i = 1; i < edge.length; i++) {
+            for (int i = 1; i <= edge.length; i++) {
                 if (edge[num][i] == 1 && visited[i] == 0) {
                     visited[i] = visited[num] + 1;
                     q.add(i);
                 }
             }
-
+            
         }
+    }
+
+    // dfs 를 이용한 풀이
+    static void dfs(int a, int b) {
+
+        if (a == b) {
+            cnt = visited[a];
+        }
+        for (int i = 1; i < edge.length; i++) {
+            if (edge[a][i] == 1 && visited[i] == 0) {
+                visited[i] = visited[a] + 1;
+                dfs(i, b);
+            }
+        }
+
     }
 }

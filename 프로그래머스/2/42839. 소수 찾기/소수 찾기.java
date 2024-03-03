@@ -11,9 +11,7 @@ class Solution {
         return set.size();
     }
 
-
     public void dfs(String s, int numberLen, int len, boolean[] visit) {
-        
         if (len > numberLen) {
             return;
         }
@@ -23,7 +21,6 @@ class Solution {
             check(s);
         }
 
-
         for(int i = 0; i < numberLen; i++) {
             if(!visit[i]) {
                 visit[i] = true;
@@ -31,10 +28,7 @@ class Solution {
                 visit[i] = false;
             }
         }
-
     }
-
-
 
     public void check(String num) {
         int number = Integer.parseInt(num);
@@ -51,6 +45,5 @@ class Solution {
             }
         }
         set.add(number);
-        System.out.print(number + " ");
     }
 }
